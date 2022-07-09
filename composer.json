@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "symfony/debug": "^3.3",
-        "nategood/httpful": "^0.3.2"
+        "nategood/httpful": "^0.3.2",
+        "guzzlehttp/guzzle": "^7.4"
     },
     "license": "GPL",
     "authors": [

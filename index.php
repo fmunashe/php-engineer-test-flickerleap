@@ -59,7 +59,29 @@ use Illuminate\Support\Facades\Http;
 
         <?php
             // Use the Httpful client to output the API results here.
+        $api_url='http://pokeapi.co/api/v2/pokemon/mewtwo/';
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get($api_url)->getBody();
+        $api_result= json_decode($response,true);
         ?>
+        <table>
+            <thead>
+            <tr>
+                <th>Game Index</th>
+                <th>Version Name</th>
+                <th>Version URL</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($api_result['game_indices'] as $game){?>
+                <tr>
+                    <td><?php echo $game['game_index']; ?></td>
+                    <td><?php echo $game['version']['name'];?></td>
+                    <td><?php echo $game['version']['url']; ?></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
 
         <h2>Recommendations</h2>
 
