@@ -10,6 +10,8 @@ require __DIR__ . '/vendor/autoload.php';
 use FlickerLeap\Diamond;
 use FlickerLeap\Rectangle;
 use FlickerLeap\Square;
+use Httpful\Request;
+use Illuminate\Support\Facades\Http;
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +23,6 @@ use FlickerLeap\Square;
         body{line-height: 1em;}
     </style>
     <body>
-
         <h1>PHP Engineer Test</h1>
 
         <h2>Hello World</h2>
@@ -42,6 +43,8 @@ use FlickerLeap\Square;
 
         <?php
             // output your diamond here
+            $diamond= new Diamond(10);
+            $diamond->draw();
         ?>
 
         <h2>Output your rectangle</h2>
