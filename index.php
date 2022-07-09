@@ -11,7 +11,6 @@ use FlickerLeap\Diamond;
 use FlickerLeap\Rectangle;
 use FlickerLeap\Square;
 use Httpful\Request;
-use Illuminate\Support\Facades\Http;
 
 ?>
 <!DOCTYPE html>
@@ -59,10 +58,8 @@ use Illuminate\Support\Facades\Http;
 
         <?php
             // Use the Httpful client to output the API results here.
-        $api_url='http://pokeapi.co/api/v2/pokemon/mewtwo/';
-        $client = new \GuzzleHttp\Client();
-        $response = $client->get($api_url)->getBody();
-        $api_result= json_decode($response,true);
+        $api_url='https://pokeapi.co/api/v2/pokemon/mewtwo/';
+        $response_body = Request::get($api_url)->send()->body;
         ?>
         <table>
             <thead>
@@ -73,11 +70,11 @@ use Illuminate\Support\Facades\Http;
             </tr>
             </thead>
             <tbody>
-            <?php foreach($api_result['game_indices'] as $game){?>
+            <?php foreach($response_body->game_indices as $game){?>
                 <tr>
-                    <td><?php echo $game['game_index']; ?></td>
-                    <td><?php echo $game['version']['name'];?></td>
-                    <td><?php echo $game['version']['url']; ?></td>
+                    <td><?php echo $game->game_index; ?></td>
+                    <td><?php echo $game->version->name;?></td>
+                    <td><?php echo $game->version->url; ?></td>
                 </tr>
             <?php } ?>
             </tbody>
