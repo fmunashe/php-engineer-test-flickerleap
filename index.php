@@ -86,6 +86,7 @@ use Illuminate\Support\Facades\Http;
         <h2>Recommendations</h2>
 
         <p><!-- Let us know how we can improve this test here --></p>
+        <p>The test is correctly set up to test the basic fundamentals that php developers deal with on a daily basis. To add on to what's already there, the test can expand to include database connections and queries.</p>
 
     </body>
 </html>
